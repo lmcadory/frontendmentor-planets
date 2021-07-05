@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand text-uppercase" href="#">the planets</a>
       <button
@@ -15,8 +15,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item" v-for="planet in planets" :key="planet">
-            <a class="nav-link text-uppercase" href="#">{{ planet }}</a>
+          <li class="nav-item" v-for="planet in planets" :key="planet.name">
+            <div :class="planet.class"></div>
+            <router-link class="nav-link text-uppercase" :to="`/${planet.name}`">{{ planet.name }}</router-link>
           </li>
         </ul>
       </div>
@@ -31,14 +32,14 @@ export default defineComponent({
   name: "HelloWorld",
   setup() {
     const planets = [
-      "mercury",
-      "venus",
-      "earth",
-      "mars",
-      "jupiter",
-      "saturn",
-      "uranus",
-      "neptune",
+      { name: "mercury", class: "planet mercury"},
+      { name: "venus", class: "planet venus"},
+      { name: "earth", class: "planet earth"},
+      { name: "mars", class: "planet mars"},
+      { name: "jupiter", class: "planet jupiter"},
+      { name: "saturn", class: "planet saturn"},
+      { name: "uranus", class: "planet uranus"},
+      { name: "neptune", class: "planet neptune"},
     ];
 
     return { planets };
@@ -46,9 +47,8 @@ export default defineComponent({
 });
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 img {
-	color: blue;
+	fill: blue;
 }
 </style>

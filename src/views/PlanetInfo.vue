@@ -1,15 +1,13 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-  </div>
+  <Planet />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import Planet from '@/components/Planet.vue';
 
 export default defineComponent({
   name: "Home",
-  components: {
-  },
+  components: { Planet  },
 });
 </script>
