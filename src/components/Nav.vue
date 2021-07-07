@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark-blue">
     <div class="container-fluid">
       <a class="navbar-brand text-uppercase" href="#">the planets</a>
       <button
@@ -50,5 +50,9 @@ export default defineComponent({
 <style lang="scss">
 img {
 	fill: blue;
+}
+
+.bg-dark-blue {
+  background-color: #070724;
 }
 </style>

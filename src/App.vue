@@ -16,5 +16,7 @@ export default defineComponent({
 
 
 <style>
-
+  body {
+    background-color: #070724;
+  }
 </style>
