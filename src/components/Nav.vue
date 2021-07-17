@@ -1,4 +1,4 @@
-<template>  
+<template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark-blue">
     <div class="container-fluid px-0">
       <div class="col">
@@ -8,21 +8,22 @@
           </div>
           <div class="col">
             <button
+              :class="{ open: isOpen }"
               class="navbar-toggler float-end pe-4"
               type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#PlanetNav"
-              aria-controls="PlanetNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
+              @click="closeNav"
             >
-              <img src="../assets/icon-hamburger.svg" alt="menu" />
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="17">
+                <g fill="#FFF" fill-rule="evenodd">
+                  <path d="M0 0h24v3H0zM0 7h24v3H0zM0 14h24v3H0z" />
+                </g>
+              </svg>
             </button>
           </div>
         </div>
         <hr class="toolbar" />
       </div>
-      <div id="PlanetNav" class="collapse navbar-collapse">
+      <div ref="navbar" id="PlanetNav" class="collapse navbar-collapse">
         <ul class="navbar-nav me-auto mb-2 mt-4 mb-lg-0">
           <li
             class="nav-item"
@@ -57,11 +58,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
+import { Collapse } from "bootstrap/dist/js/bootstrap";
 
 export default defineComponent({
   name: "Planets",
   setup() {
+    const isOpen = ref(true);
     const planets = [
       { name: "mercury", class: "planet mercury" },
       { name: "venus", class: "planet venus" },
@@ -73,22 +76,24 @@ export default defineComponent({
       { name: "neptune", class: "planet neptune" },
     ];
 
-    const show = ref(false);
+    let bsCollapse = undefined;
+
+    onMounted(() => {
+      const id = document.getElementById("PlanetNav");
+      bsCollapse = new Collapse(id);
+    });
 
     const closeNav = () => {
-      show.value = false;
+      (bsCollapse || new Collapse()).toggle();
+      isOpen.value = false;
     };
 
-    return { planets, show, closeNav };
+    return { planets, isOpen, closeNav };
   },
 });
 </script>
 
 <style lang="scss" scoped>
-img {
-  fill: blue;
-}
-
 hr {
   background-color: #ffffff;
   mix-blend-mode: normal;
@@ -115,6 +120,10 @@ hr {
   &:focus {
     box-shadow: none;
   }
+}
+
+.open {
+  fill-opacity: 0.2;
 }
 
 .planet {
