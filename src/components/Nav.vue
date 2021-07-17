@@ -114,6 +114,15 @@ hr {
   background-color: #070724;
 }
 
+.navbar-brand {
+  font-family: Antonio;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  letter-spacing: -1.05px;
+}
+
 .navbar-toggler {
   border: transparent;
 

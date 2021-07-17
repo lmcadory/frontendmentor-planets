@@ -180,18 +180,31 @@ export default defineComponent({
     font-weight: bold;
     font-size: 0.5rem;
     line-height: 1rem;
-    text-align: right;
+    text-align: left;
     letter-spacing: -0.75px;
     margin-top: 0.563rem;
     margin-bottom: 0.813rem;
+    opacity: .2;
+  }
+
+  .number {
+    font-family: Antonio;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.25rem;
+    line-height: 1.625rem;
+    text-align: right;
+    letter-spacing: -0.75px;
+    margin-top: .563rem;
+    margin-bottom: .813rem;
   }
 
   .nav-pills::after {
     content: "";
     display: block;
-    position: relative;    
+    position: relative;
     width: 100%;
-    border-bottom: 1px solid rgba($color: #ffffff, $alpha: .2);
+    border-bottom: 1px solid rgba($color: #ffffff, $alpha: 0.2);
   }
 
   .source {
@@ -209,7 +222,7 @@ export default defineComponent({
     font-family: Antonio;
     font-size: 2.5rem;
     line-height: 3.25rem;
-  }  
+  }
 
   .mercury {
     @include tabs-img(7rem, 6rem, 6rem, #419ebb);
