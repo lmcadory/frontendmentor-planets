@@ -1,0 +1,36 @@
+@mixin tabs-img($width, $padding-top, $padding-bottom, $color) {
+  img {
+    width: $width;
+    padding-top: $padding-top;
+    padding-bottom: $padding-bottom;
+  }
+
+  a {
+    &.nav-link {
+      font-weight: bold;
+      font-size: 0.563rem;
+      line-height: 0.625rem;
+      text-align: center;
+      letter-spacing: 1.92857px;
+      color: rgba($color: #ffffff, $alpha: .2);
+      border: none;
+
+      &.active {
+        border: none;
+        background: transparent;
+        color: #ffffff;
+        
+
+        &::after {
+          content: "";
+          display: block;
+          position: relative;
+          margin: 0 auto;
+          margin-top: 1.063rem;
+          width: 5rem;
+          border-bottom: 4px solid $color;
+        }
+      }
+    }
+  }
+}
