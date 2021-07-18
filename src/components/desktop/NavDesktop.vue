@@ -1,5 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark-blue">
+  <nav
+    class="navbar navbar-expand-lg navbar-expand-md navbar-dark bg-dark-blue"
+  >
     <div class="container-fluid px-0">
       <div class="col">
         <div class="row">
@@ -24,8 +26,21 @@
         <hr class="toolbar" />
       </div>
       <div ref="navbar" id="PlanetNav" class="collapse navbar-collapse">
-        <ul class="navbar-nav me-auto mb-2 mt-4 mb-lg-0">
+        <ul class="navbar-nav me-auto mb-2 mt-4">
           <li
+            v-show="$grid.breakpoint === 'md'"
+            class="nav-item"
+            v-for="planet in planets"
+            :key="planet.name"
+          >
+            <router-link
+              class="nav-link text-uppercase"
+              :to="`/${planet.name}`"              
+              >{{ planet.name }}</router-link
+            >
+          </li>
+          <li
+            v-show="$grid.breakpoint === 'xs'"
             class="nav-item"
             v-for="(planet, index) in planets"
             :key="planet.name"
