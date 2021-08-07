@@ -3,6 +3,10 @@ import PlanetInfo from "../views/PlanetInfo.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
+    path: '/',
+    redirect: '/mercury'
+  },
+  {
     path: "/:name",
     name: "Info",
     component: PlanetInfo,    
