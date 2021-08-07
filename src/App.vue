@@ -1,5 +1,5 @@
 <template>
-  <!-- <NavDesktop v-show="$grid.breakpoint === 'xl'" /> -->
+  <NavDesktop v-show="$grid.breakpoint === 'xl' || $grid.breakpoint === 'xxl'" />
   <NavTablet v-show="$grid.breakpoint === 'md'" />
   <NavMobile v-show="$grid.breakpoint === 'xs' || $grid.breakpoint === 'sm'" />
   <router-view />
@@ -7,11 +7,11 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import NavMobile from "@/components/mobile/NavMobile.vue";
-import NavDesktop from "./components/desktop/NavDesktop.vue";
-import NavTablet from "./components/tablet/NavTablet.vue";
+import NavDesktop from "@/components/desktop/NavDesktop.vue";
+import NavTablet from "@/components/tablet/NavTablet.vue";
 
 export default defineComponent({
-  components: { NavMobile, NavTablet },  
+  components: { NavMobile, NavTablet, NavDesktop },  
 });
 </script>
 
@@ -24,4 +24,5 @@ body {
   font-size: 0.875rem;
   line-height: 1.563rem;
 }
+  
 </style>

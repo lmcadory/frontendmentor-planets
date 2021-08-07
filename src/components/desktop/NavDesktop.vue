@@ -1,85 +1,36 @@
 <template>
-  <nav
-    class="navbar navbar-expand-lg navbar-expand-md navbar-dark bg-dark-blue"
-  >
+  <nav class="navbar navbar-dark bg-dark-blue p-0">
     <div class="container-fluid px-0">
       <div class="col">
-        <div class="row">
-          <div class="col-2">
-            <a class="navbar-brand ps-4 text-uppercase" href="#">the planets</a>
+        <div class="row text-start">
+          <div class="col-6 brand">
+            <span class="navbar-brand text-uppercase">the planets</span>
           </div>
-          <div class="col">
-            <button
-              :class="{ open: isOpen }"
-              class="navbar-toggler float-end pe-4"
-              type="button"
-              @click="closeNav"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="17">
-                <g fill="#FFF" fill-rule="evenodd">
-                  <path d="M0 0h24v3H0zM0 7h24v3H0zM0 14h24v3H0z" />
-                </g>
-              </svg>
-            </button>
-          </div>
-        </div>
-        <hr class="toolbar" />
-      </div>
-      <div ref="navbar" id="PlanetNav" class="collapse navbar-collapse">
-        <ul class="navbar-nav me-auto mb-2 mt-4">
-          <li
-            v-show="$grid.breakpoint === 'md'"
-            class="nav-item"
-            v-for="planet in planets"
-            :key="planet.name"
-          >
-            <router-link
-              class="nav-link text-uppercase"
-              :to="`/${planet.name}`"              
-              >{{ planet.name }}</router-link
-            >
-          </li>
-          <li
-            v-show="$grid.breakpoint === 'xs'"
-            class="nav-item"
-            v-for="(planet, index) in planets"
-            :key="planet.name"
-          >
-            <div
-              class="ps-4 row align-items-center"
-              :class="{ 'mb-2': index === planets.length - 1 }"
-            >
-              <div class="col-1">
-                <div :class="planet.class"></div>
-              </div>
-              <div class="col">
+          <div class="col-6">
+            <ul class="nav justify-content-end">
+              <li class="nav-item" v-for="planet in planets" :key="planet.name">
                 <router-link
-                  class="nav-link text-uppercase"
+                  class="nav-link links text-uppercase p-0"
+                  :class="planet.name"
                   :to="`/${planet.name}`"
-                  @click="closeNav"
                   >{{ planet.name }}</router-link
                 >
-              </div>
-              <div class="pe-5 col text-end">
-                <img src="../assets/icon-chevron.svg" alt="menu" />
-              </div>
-            </div>
-            <hr class="item" v-if="index !== planets.length - 1" />
-          </li>
-        </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <hr />
       </div>
     </div>
   </nav>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from "vue";
-import { Collapse } from "bootstrap/dist/js/bootstrap";
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "Planets",
   setup() {
-    const isOpen = ref(true);
     const planets = [
       { name: "mercury", class: "planet mercury" },
       { name: "venus", class: "planet venus" },
@@ -91,42 +42,43 @@ export default defineComponent({
       { name: "neptune", class: "planet neptune" },
     ];
 
-    let bsCollapse = undefined;
-
-    onMounted(() => {
-      const id = document.getElementById("PlanetNav");
-      bsCollapse = new Collapse(id);
-    });
-
-    const closeNav = () => {
-      (bsCollapse || new Collapse()).toggle();
-      isOpen.value = false;
-    };
-
-    return { planets, isOpen, closeNav };
+    return { planets };
   },
 });
 </script>
 
 <style lang="scss" scoped>
+@import "../../scss/mixin.scss";
+
 hr {
-  background-color: #ffffff;
-  mix-blend-mode: normal;
-  margin: 0;
-
-  &.toolbar {
-    opacity: 0.2;
-    margin-top: 14px;
-  }
-
-  &.item {
-    opacity: 0.1;
-    margin: 16px 22px 16px;
-  }
+  margin-top: 1.688rem;
+  margin-bottom: 0;
+  background: #ffffff;
+  opacity: 0.2;
 }
-
 .bg-dark-blue {
   background-color: #070724;
+}
+
+.col-6 {
+  padding-top: 2rem;
+  padding-right: 2.5rem;
+}
+
+.links {
+  font-family: Spartan;
+  font-weight: bold;
+  font-size: 0.688rem;
+  line-height: 1.563rem;
+  letter-spacing: 1px;
+  color: #ffffff;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.brand {
+  padding-top: 1.375rem;
+  padding-left: 2rem;
 }
 
 .navbar-brand {
@@ -138,53 +90,37 @@ hr {
   letter-spacing: -1.05px;
 }
 
-.navbar-toggler {
-  border: transparent;
-
-  &:focus {
-    box-shadow: none;
-  }
-}
-
-.open {
-  fill-opacity: 0.2;
-}
-
-.planet {
-  width: 1.25rem;
-  height: 1.25rem;
-  border-radius: 50%;
-
-  &.mercury {
-    background-color: #def4fc;
+li {
+  .mercury {
+    @include nav-link(#419ebb);
   }
 
-  &.venus {
-    background-color: #f7cc7f;
+  .venus {
+    @include nav-link(#eda249);
   }
 
-  &.earth {
-    background-color: #545bfe;
+  .earth {
+    @include nav-link(#6d2ed5);
   }
 
-  &.mars {
-    background-color: #ff6a45;
+  .mars {
+    @include nav-link(#d14c32);
   }
 
-  &.jupiter {
-    background-color: #ecad7a;
+  .jupiter {
+    @include nav-link(#d83a34);
   }
 
-  &.saturn {
-    background-color: #fccb6b;
+  .saturn {
+    @include nav-link(#cd5120);
   }
 
-  &.uranus {
-    background-color: #65f0d5;
+  .uranus {
+    @include nav-link(#1ec1a2);
   }
 
-  &.neptune {
-    background-color: #497efa;
+  .neptune {
+    @include nav-link(#2d68f0);
   }
 }
 </style>

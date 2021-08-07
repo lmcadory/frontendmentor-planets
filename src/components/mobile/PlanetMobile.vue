@@ -126,7 +126,7 @@
       </div>
       <div class="p-2 box px-0">
         <div class="row mx-4">
-          <p class="text-uppercase col-6 label my-3 px-0">average temp.e</p>
+          <p class="text-uppercase col-6 label my-3 px-0">average temp.</p>
           <p class="col-6 number px-0">{{ planet.temperature }}</p>
         </div>
       </div>
@@ -173,7 +173,7 @@ export default defineComponent({
 
   .content {
     font-size: 0.688rem;
-    line-height: 1.375;
+    line-height: 1.375rem;
   }
 
   .label {

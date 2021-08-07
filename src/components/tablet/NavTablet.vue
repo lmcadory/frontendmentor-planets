@@ -23,13 +23,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from "vue";
-import { Collapse } from "bootstrap/dist/js/bootstrap";
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "Planets",
   setup() {
-    const isOpen = ref(true);
     const planets = [
       { name: "mercury", class: "planet mercury" },
       { name: "venus", class: "planet venus" },
@@ -41,19 +39,7 @@ export default defineComponent({
       { name: "neptune", class: "planet neptune" },
     ];
 
-    let bsCollapse = undefined;
-
-    onMounted(() => {
-      const id = document.getElementById("PlanetNav");
-      bsCollapse = new Collapse(id);
-    });
-
-    const closeNav = () => {
-      (bsCollapse || new Collapse()).toggle();
-      isOpen.value = false;
-    };
-
-    return { planets, isOpen, closeNav };
+    return { planets };
   },
 });
 </script>

@@ -123,7 +123,7 @@
         <p class="number">{{ planet.radius }}</p>
       </div>
       <div class="box text-start col">
-        <p class="text-uppercase label">average temp.e</p>
+        <p class="text-uppercase label">average temp.</p>
         <p class="number">{{ planet.temperature }}</p>
       </div>
     </div>
@@ -212,7 +212,7 @@ export default defineComponent({
 
   .content {
     font-size: 0.688rem;
-    line-height: 1.375;
+    line-height: 1.375rem;
   }
 
   .label {
