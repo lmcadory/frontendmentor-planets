@@ -5,9 +5,8 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/:name",
     name: "Info",
-    component: PlanetInfo,
-    props: true,
-  },  
+    component: PlanetInfo,    
+  },
 ];
 
 const router = createRouter({

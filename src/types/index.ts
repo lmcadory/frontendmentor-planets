@@ -3,7 +3,6 @@ interface ConentSource {
   soure: string;
 }
 
-
 export default interface Planet {
   name: string;
   content: ConentSource;
@@ -19,4 +18,3 @@ export default interface Planet {
     geology: string;
   };
 }
-
